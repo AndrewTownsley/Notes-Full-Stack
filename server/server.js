@@ -12,7 +12,7 @@ const app = express();
 // Routes...
 const note = require("./routes/note"); 
 
-app.use(express.static(path.resolve(__dirname, '../client/build')))
+app.use(express.static(path.join(__dirname, 'build')))
 
 app.use(cors({ origin: true, credentials: true}));
 app.use(morgan("dev"));
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
     res.send("**** Server is Running ****")
 })
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
 })
 
 // Use Routes...
