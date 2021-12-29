@@ -80,21 +80,24 @@ const deleteNote = ( _id ) => {
   
 }
 
-const completeNote = index => {
-  // const newNotes = [...notesArray];
-   complete ? setComplete(true) : setComplete(false);
-  // setNotesArray(newNotes);
-};
+const completeNote = (index) => {
+  let notesArrayCopy = [...notesArray];
 
+  (notesArrayCopy[index].completed)
+  ?
+  (notesArrayCopy[index].completed = false)
+  :
+  (notesArrayCopy[index].completed = true)
+  setNotesArray(notesArrayCopy)
+}
 
-// const completeNote = (id) => {
-//   notesArray.map(item => {
-//     if(item.id === id) {
-//       return { ...item, completed: !item.completed};
-//     }
-//     return item;
-//   })
-// }
+const completeNoteStyle = (index) => {
+  if(notesArray[index].completed) {
+    return "note note-complete"
+  } else {
+    return "note"
+  }
+}
   
 const handleTitleChange = (event) => {
   if(event.target.value.length >= 0) {
@@ -141,6 +144,7 @@ const handleCategorySort = (e) => {
           setOpen={setOpen}
           deleteNote={deleteNote}
           completeNote={completeNote}
+          completeNoteStyle={completeNoteStyle}
           complete={complete}
           setComplete={setComplete}
           setNotesArray={setNotesArray}

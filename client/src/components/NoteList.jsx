@@ -3,7 +3,7 @@ import Note from "./Note";
 import NoteSearch from "./NoteSearch";
 
 
-const NoteList = ({ notesArray, setNotesArray, handleSearchNote, handleCategorySort, open, setOpen, deleteNote, complete, setComplete, completeNote }) => {
+const NoteList = ({ notesArray, setNotesArray, handleSearchNote, handleCategorySort, open, setOpen, deleteNote, complete, setComplete, completeNote, completeNoteStyle }) => {
 
 
     return(
@@ -33,6 +33,7 @@ const NoteList = ({ notesArray, setNotesArray, handleSearchNote, handleCategoryS
                             complete={complete}
                             setComplete={setComplete}
                             completeNote={completeNote}
+                            completeNoteStyle={completeNoteStyle}
                             setNotesArray={setNotesArray}
                         />
                 })}
