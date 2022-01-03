@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from 'react'
 import { FaPlus } from "react-icons/fa"
 import axios from 'axios';
+import { nanoid } from "nanoid";
 
 
-const Edit = ({saveNote, noteText, noteTitle, handleTitleChange, handleTextChange, handleCategoryChange, setOpenEdit}) => {
+const Edit = ({ _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setComplete, handleTitleChange, handleTextChange, handleCategoryChange, category, setOpenEdit, handleEditedNote}) => {
 
   const modalRef = useRef(null);
 
@@ -15,6 +16,36 @@ const Edit = ({saveNote, noteText, noteTitle, handleTitleChange, handleTextChang
     window.addEventListener('click', handleCloseModal)
     return () => window.removeEventListener('click', handleCloseModal)
 }, [])
+
+const saveNote = async () => {
+  const date = new Date();
+
+  const newNote = {
+    id: nanoid(),
+    title: noteTitle,
+    text: noteText,
+    category: category,
+    completed: false,
+    date: date.toLocaleDateString()
+  }
+
+  if(noteText.trim().length > 0) {
+
+    axios 
+        .put(`http://localhost:8000/api/note/${_id}` , newNote)  
+        .then((res) => {
+            createNote(noteText);
+            // setNotesArray([...notesArray, newNote])
+            setNoteText('');
+            setNoteTitle('');
+            setComplete(false);
+        })
+        .catch((err) => {
+          console.log(err.message)
+          console.log("ERROR could not create note.");
+        })
+}
+}
 
 
     return (

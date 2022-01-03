@@ -20,15 +20,15 @@ exports.postCreateNote = (req, res) => {
         );
 };
 
-// exports.completeUpdateNote = (req, res) => {
-//     Node.findByIdAndUpdate(req.params.id, req.body)
-//         .then((data) => res.json({ message: "Note Completed Successfuly", data}))
-//         .catch((err) => 
-//             res
-//                 .status(404)
-//                 .json({ message: "Note Failed to Complete.", error: err.message })
-//         );
-// };
+exports.completeUpdateNote = (req, res) => {
+    Node.findByIdAndUpdate(req.params.id, req.body)
+        .then((data) => res.json({ message: "Note Completed Successfuly", data}))
+        .catch((err) => 
+            res
+                .status(404)
+                .json({ message: "Note Failed to Complete.", error: err.message })
+        );
+};
 
 exports.deleteNote = (req, res) => {
     // console.log(req);

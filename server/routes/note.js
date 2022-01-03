@@ -12,8 +12,7 @@ router.get("/", getAllNote);
 
 router.post("/", postCreateNote);
 
-// router.put("/:id", putUpdateNote);
-// router.put("/:id", completeUpdateNote);
+router.put("/:id", completeUpdateNote);
 
 router.delete("/:id", deleteNote);
 
