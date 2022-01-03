@@ -5,8 +5,6 @@ import { RiCheckLine } from 'react-icons/ri';
 const Note = ({ id, index, note, deleteNote, completeNote, completeNoteStyle, complete, setComplete, editNote, openEdit, setOpenEdit }) => {
 
 
-
-
     return (
           <article 
               // className={ !complete ? 'note' : 'note note-complete'} 
@@ -27,7 +25,7 @@ const Note = ({ id, index, note, deleteNote, completeNote, completeNoteStyle, co
             {/* <p>{note.text.substring(0, 50)}</p> */}
             <div className="note-footer">
               <p>{note.date}</p>
-              <button name={note._id} onClick={() => editNote}>edit</button>
+              <button name={note._id} onClick={(e) => editNote(id, note._id)}>edit</button>
               <MdDeleteForever className="delete-btn" onClick={() => deleteNote(note._id)}/>
             </div>
           </article>

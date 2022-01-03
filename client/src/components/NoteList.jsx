@@ -23,6 +23,7 @@ const NoteList = ({ handleTitleChange, handleTextChange, noteTitle, noteText, no
                 openEdit ? 
                 (
                     <EditNote 
+                        editNote={editNote}
                         openEdit={openEdit} 
                         setOpenEdit={setOpenEdit}
                         handleTextChange={handleTextChange}

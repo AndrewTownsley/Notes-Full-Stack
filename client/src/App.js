@@ -15,6 +15,7 @@ function App() {
   const [open, setOpen] = useState(false);
   const [complete, setComplete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
+  const [id, setId] = useState('');
   // const [complete, setComplete] = useLocalStorage("complete", false);
   const [notesArray, setNotesArray] = useState([])
   const characterLimit = 200;
@@ -100,7 +101,8 @@ const completeNoteStyle = (index) => {
   }
 }
 
-const editNote = (id) => {
+const editNote = (e, id, _id) => {
+  setId(_id);
   setOpenEdit(true);
   console.log("edit note function has been called...");
 } 

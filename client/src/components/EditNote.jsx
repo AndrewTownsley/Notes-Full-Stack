@@ -1,10 +1,11 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { FaPlus } from "react-icons/fa"
 import axios from 'axios';
 import { nanoid } from "nanoid";
 
 
-const Edit = ({ _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setComplete, handleTitleChange, handleTextChange, handleCategoryChange, category, setOpenEdit, handleEditedNote}) => {
+const Edit = ({ editNote, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setComplete, handleTitleChange, handleTextChange, handleCategoryChange, category, setOpenEdit, handleEditedNote}) => {
+  const [noteData, setNoteData] = useState({ title: "", text: "", category: "" })
 
   const modalRef = useRef(null);
 
@@ -15,57 +16,68 @@ const Edit = ({ _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle,
     }
     window.addEventListener('click', handleCloseModal)
     return () => window.removeEventListener('click', handleCloseModal)
-}, [])
+}, [setOpenEdit])
 
-const saveNote = async () => {
-  const date = new Date();
+const handleChange = (e) => {
+  setNoteData((noteData) => ({...noteData, [e.target.value]: e.target.value}))
+}
 
-  const newNote = {
-    id: nanoid(),
-    title: noteTitle,
-    text: noteText,
-    category: category,
-    completed: false,
-    date: date.toLocaleDateString()
-  }
+const saveNote = async (e) => {
+  e.preventDefault();
+  console.log({ _id }, { noteData });
 
-  if(noteText.trim().length > 0) {
+  // const date = new Date();
+
+  // const newNote = {
+  //   id: nanoid(),
+  //   title: noteTitle,
+  //   text: noteText,
+  //   category: category,
+  //   completed: false,
+  //   date: date.toLocaleDateString()
+  // }
+
 
     axios 
-        .put(`http://localhost:8000/api/note/${_id}` , newNote)  
+        .put(`http://localhost:8000/api/note/${_id}` , noteData)  
         .then((res) => {
-            createNote(noteText);
+          console.log(res.data.message);
+            // setNoteData({})
+            // createNote(noteText);
             // setNotesArray([...notesArray, newNote])
-            setNoteText('');
-            setNoteTitle('');
-            setComplete(false);
+            // setNoteText('');
+            // setNoteTitle('');
+            // setComplete(false);
         })
         .catch((err) => {
           console.log(err.message)
           console.log("ERROR could not create note.");
         })
 }
-}
 
 
     return (
       <div className="edit-window">
         <div ref={modalRef} className="note-input note-edit" onClick={() => setOpenEdit(true)}   >
-            <form className='edit'>
+            <form onSubmit={(e) => {
+              saveNote();
+              editNote();
+            }} className='edit'>
             <label htmlFor="note-title">
               </label>
               <input
-               onChange={handleTitleChange} 
+               onChange={handleChange} 
                value={noteTitle} 
+               name="title"
                type="text" id="note-title" name="note-title" placeholder="Title..." 
                autoComplete="off" 
                />
             <textarea 
-              onChange={handleTextChange}
+              onChange={handleChange}
               value={noteText} 
+              name="text"
               rows="6" cols="20" 
               placeholder="Enter note here..." 
-              name="note" 
               id="note-input"
               >
               </textarea>
@@ -78,7 +90,9 @@ const saveNote = async () => {
                 <option value="Personal">Personal</option>
                 <option value="Misc">Misc</option>
               </select>
-            <button className="save-btn" onClick={saveNote}><FaPlus className="plus"/>Save Note</button>
+            <button type="submit" className="save-btn" 
+              // onClick={(e) => saveNote}
+            ><FaPlus className="plus"/>Save Note</button>
             <button onClick={() => setOpenEdit(false)}>close</button>    
         </form>
     </div>
