@@ -14,6 +14,7 @@ function App() {
   const [searchText, setSearchText] = useState('');
   const [open, setOpen] = useState(false);
   const [complete, setComplete] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
   // const [complete, setComplete] = useLocalStorage("complete", false);
   const [notesArray, setNotesArray] = useState([])
   const characterLimit = 200;
@@ -98,6 +99,11 @@ const completeNoteStyle = (index) => {
     return "note"
   }
 }
+
+const editNote = (id) => {
+  setOpenEdit(true);
+  console.log("edit note function has been called...");
+} 
   
 const handleTitleChange = (event) => {
   if(event.target.value.length >= 0) {
@@ -148,6 +154,9 @@ const handleCategorySort = (e) => {
           complete={complete}
           setComplete={setComplete}
           setNotesArray={setNotesArray}
+          editNote={editNote}
+          openEdit={openEdit}
+          setOpenEdit={setOpenEdit}
         />  
     </div>
   );
