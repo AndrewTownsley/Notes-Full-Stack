@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import { FaPlus } from "react-icons/fa"
+import axios from 'axios';
 
-const Edit = ({saveNote, noteText, noteTitle, handleTitleChange, handleTextChange, handleCategoryChange}) => {
+
+const Edit = ({saveNote, noteText, noteTitle, handleTitleChange, handleTextChange, handleCategoryChange, setOpenEdit}) => {
+
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    const handleCloseModal = (event) => {
+      if(!modalRef.current?.contains(event.target))
+        setOpenEdit(false)   
+    }
+    window.addEventListener('click', handleCloseModal)
+    return () => window.removeEventListener('click', handleCloseModal)
+}, [])
+
+
     return (
-        <div className="note-input">
-        <h1>noteflix</h1>
+      <div className="edit-window">
+        <div ref={modalRef} className="note-input note-edit" onClick={() => setOpenEdit(true)}   >
+            <form className='edit'>
             <label htmlFor="note-title">
               </label>
               <input
@@ -11,7 +28,7 @@ const Edit = ({saveNote, noteText, noteTitle, handleTitleChange, handleTextChang
                value={noteTitle} 
                type="text" id="note-title" name="note-title" placeholder="Title..." 
                autoComplete="off" 
-              />
+               />
             <textarea 
               onChange={handleTextChange}
               value={noteText} 
@@ -19,7 +36,7 @@ const Edit = ({saveNote, noteText, noteTitle, handleTitleChange, handleTextChang
               placeholder="Enter note here..." 
               name="note" 
               id="note-input"
-              autoFocus={true} >
+              >
               </textarea>
               <select className="note-input-select" onChange={handleCategoryChange} name="category" id="categorySelect">
                 <option value="">Category</option>
@@ -31,7 +48,10 @@ const Edit = ({saveNote, noteText, noteTitle, handleTitleChange, handleTextChang
                 <option value="Misc">Misc</option>
               </select>
             <button className="save-btn" onClick={saveNote}><FaPlus className="plus"/>Save Note</button>
+            <button onClick={() => setOpenEdit(false)}>close</button>    
+        </form>
     </div>
+  </div>
     )
 }
 

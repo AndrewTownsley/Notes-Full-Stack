@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import Note from "./Note";
 import NoteSearch from "./NoteSearch";
+import EditNote from './EditNote';
 
 
 const NoteList = ({ notesArray, setNotesArray, handleSearchNote, handleCategorySort, open, setOpen, deleteNote, complete, setComplete, completeNote, completeNoteStyle, editNote, openEdit, setOpenEdit }) => {
@@ -21,9 +22,7 @@ const NoteList = ({ notesArray, setNotesArray, handleSearchNote, handleCategoryS
             {
                 openEdit ? 
                 (
-                    <EditNote className="edit-window">
-                        <h1>update note</h1>
-                        <button onClick={() => setOpenEdit(false)}>close</button>    
+                    <EditNote openEdit={openEdit} setOpenEdit={setOpenEdit}>
                     </EditNote>
                 )
                 : 

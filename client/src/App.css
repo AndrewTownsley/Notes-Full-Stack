@@ -284,6 +284,29 @@ select option {
   align-items: center;
   height: 100vh;
   width: 100vw;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 3;
+}
+
+/* .edit-window.active {
+  display: 
+} */
+
+.note-edit {
+  z-index: 4;
+  /* display: none; */
+}
+
+.edit {
+  width: 500px;
+  border: var(--border-gray);
+  border-radius: var(--border-rad);
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
 }
 
 .note-search-container {
