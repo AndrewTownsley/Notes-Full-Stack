@@ -21,10 +21,10 @@ const NoteList = ({ notesArray, setNotesArray, handleSearchNote, handleCategoryS
             {
                 openEdit ? 
                 (
-                    <div>
+                    <EditNote className="edit-window">
                         <h1>update note</h1>
                         <button onClick={() => setOpenEdit(false)}>close</button>    
-                    </div>
+                    </EditNote>
                 )
                 : 
                 (

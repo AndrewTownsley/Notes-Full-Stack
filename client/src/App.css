@@ -267,6 +267,7 @@ select option {
 /* ----------------------------------- Note Item  */
 
 .notes-list {
+  position: relative;
   background-color: var(--bg-primary);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
@@ -274,10 +275,16 @@ select option {
   margin-top: 2rem;
 }
 
-/* .note-search-mobile-header h1 {
-  display: none;
-  visibility: hidden;
-} */
+.edit-window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
 
 .note-search-container {
   background-color: var(--bg-primary);
