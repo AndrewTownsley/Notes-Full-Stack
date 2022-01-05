@@ -4,7 +4,7 @@ import NoteSearch from "./NoteSearch";
 import EditNote from './EditNote';
 
 
-const NoteList = ({ handleTitleChange, handleTextChange, noteTitle, noteText, notesArray, setNotesArray, handleSearchNote, handleCategorySort, open, setOpen, deleteNote, complete, setComplete, completeNote, completeNoteStyle, editNote, openEdit, setOpenEdit }) => {
+const NoteList = ({ id, handleTitleChange, handleTextChange, noteTitle, noteText, notesArray, setNotesArray, handleSearchNote, handleCategorySort, open, setOpen, deleteNote, complete, setComplete, completeNote, completeNoteStyle, editNote, openEdit, setOpenEdit }) => {
 
 
     return(
@@ -23,13 +23,16 @@ const NoteList = ({ handleTitleChange, handleTextChange, noteTitle, noteText, no
                 openEdit ? 
                 (
                     <EditNote 
+                        id={id}
                         editNote={editNote}
                         openEdit={openEdit} 
                         setOpenEdit={setOpenEdit}
                         handleTextChange={handleTextChange}
                         handleTitleChange={handleTitleChange}
                         noteTitle={noteTitle}
-                        noteText={noteText}    
+                        noteText={noteText}  
+                        notesArray={notesArray}  
+                        setNotesArray={setNotesArray}  
                     >
                     </EditNote>
                 )
@@ -53,6 +56,7 @@ const NoteList = ({ handleTitleChange, handleTextChange, noteTitle, noteText, no
                     completeNoteStyle={completeNoteStyle}
                     setNotesArray={setNotesArray}
                     editNote={editNote}
+                    setOpenEdit={setOpenEdit}
                     />
                 })}
             </div>

@@ -13,7 +13,7 @@ const NoteSchema = new Schema({
     },
     complete: {
         type: Boolean,
-        required: true,
+        required: false,
         default: false
     },
     category: {

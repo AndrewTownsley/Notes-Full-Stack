@@ -25,7 +25,7 @@ const Note = ({ id, index, note, deleteNote, completeNote, completeNoteStyle, co
             {/* <p>{note.text.substring(0, 50)}</p> */}
             <div className="note-footer">
               <p>{note.date}</p>
-              <button name={note._id} onClick={(e) => editNote(id, note._id)}>edit</button>
+              <button onClick={() => editNote(note._id)}>edit</button>
               <MdDeleteForever className="delete-btn" onClick={() => deleteNote(note._id)}/>
             </div>
           </article>

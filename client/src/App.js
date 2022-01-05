@@ -16,7 +16,6 @@ function App() {
   const [complete, setComplete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const [id, setId] = useState('');
-  // const [complete, setComplete] = useLocalStorage("complete", false);
   const [notesArray, setNotesArray] = useState([])
   const characterLimit = 200;
 
@@ -74,7 +73,7 @@ const createNote = () => {
 }
 
 const deleteNote = ( _id ) => {
-  axios.delete( `http://localhost:8000/api/note/${_id}`)  
+  axios.delete( `http://localhost:8000/api/note/${_id}`)
   .catch((error) => console.log(error))
   setNotesArray((notesArray) => {
     return notesArray.filter((note) => note._id !== _id)
@@ -101,7 +100,7 @@ const completeNoteStyle = (index) => {
   }
 }
 
-const editNote = (e, id, _id) => {
+const editNote = (_id) => {
   setId(_id);
   setOpenEdit(true);
   console.log("edit note function has been called...");
@@ -159,6 +158,7 @@ const handleCategorySort = (e) => {
           editNote={editNote}
           openEdit={openEdit}
           setOpenEdit={setOpenEdit}
+          id={id}
         />  
     </div>
   );

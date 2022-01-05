@@ -21,7 +21,8 @@ exports.postCreateNote = (req, res) => {
 };
 
 exports.completeUpdateNote = (req, res) => {
-    Node.findByIdAndUpdate(req.params.id, req.body)
+    console.log(req)
+    Note.findByIdAndUpdate(req.params.id, req.body)
         .then((data) => res.json({ message: "Note Completed Successfuly", data}))
         .catch((err) => 
             res
