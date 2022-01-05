@@ -19,9 +19,9 @@ app.use(morgan("dev"));
 connectDB();
     
 app.use(express.json({ extended: false }));
-app.get('/', (req, res) => {
-    res.send("**** Server is Running ****")
-})
+// app.get('/', (req, res) => {
+//     res.send("**** Server is Running ****")
+// })
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 })
