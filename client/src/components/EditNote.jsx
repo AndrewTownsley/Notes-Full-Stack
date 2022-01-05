@@ -7,6 +7,7 @@ import axios from 'axios';
 const Edit = ({  id, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setOpenEdit, handleEditedNote}) => {
   const [editTitle, setEditTitle] = useState('');
   const [editText, setEditText] = useState('');
+  const [editCategory, setEditCategory] = useState('');
   // const { id } = useParams();
   console.log(notesArray);
   const note = notesArray.find(note => (note._id).toString() === id);
@@ -27,13 +28,14 @@ useEffect(() => {
   if (note) {
     setEditTitle(note.title);
     setEditText(note.text);
+    setEditCategory(note.category)
   }
 }, [note, setEditTitle, setEditText])
 
 const handleSubmit = (e,  _id) => {
   // e.preventDefault();
   console.log(id);
-  const updatedNote = { _id, title: editTitle, text: editText }
+  const updatedNote = { _id, title: editTitle, text: editText, category: editCategory }
   console.log("edit form submitted...");
   axios 
     .put(`http://localhost:8000/api/note/${id}` , updatedNote)  
@@ -76,6 +78,15 @@ const handleSubmit = (e,  _id) => {
               placeholder="Enter note here..." 
               >
               </textarea>
+              <select className="note-input-select" onChange={(e) => setEditCategory(e.target.value)} name="category" id="categorySelect">
+                  <option value="">Category</option>
+                  <option value="Important">Important !</option>
+                  <option value="Work">Work</option>
+                  <option value="School">School</option>
+                  <option value="Home">Home</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Misc">Misc</option>
+                </select>
             <button 
                 type="submit" 
                 className="save-btn" 

@@ -1,4 +1,5 @@
 import { MdDeleteForever } from 'react-icons/md';
+import { MdEdit } from 'react-icons/md';
 import { RiCheckLine } from 'react-icons/ri';
 
 
@@ -25,8 +26,10 @@ const Note = ({ id, index, note, deleteNote, completeNote, completeNoteStyle, co
             {/* <p>{note.text.substring(0, 50)}</p> */}
             <div className="note-footer">
               <p>{note.date}</p>
-              <button onClick={() => editNote(note._id)}>edit</button>
-              <MdDeleteForever className="delete-btn" onClick={() => deleteNote(note._id)}/>
+              <div className="note-footer-icon-container">
+                <MdEdit className="edit-btn" onClick={() => editNote(note._id)} />
+                <MdDeleteForever className="delete-btn" onClick={() => deleteNote(note._id)}/>
+              </div>
             </div>
           </article>
         )

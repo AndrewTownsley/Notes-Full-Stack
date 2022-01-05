@@ -282,19 +282,14 @@ select option {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   background-color: rgba(0,0,0,0.7);
   z-index: 3;
 }
 
-/* .edit-window.active {
-  display: 
-} */
-
 .note-edit {
   z-index: 4;
-  /* display: none; */
 }
 
 .edit {
@@ -349,7 +344,6 @@ select option {
   margin: 1rem;
   background-color: var(--note-clr);
   color: var(--font-main-clr);
-  cursor: pointer;
   transition: var(--trans-fast);
   box-shadow: var(--box-shd);
 }
@@ -388,6 +382,13 @@ select option {
   color: var(--font-light-clr);
 }
 
+.note-footer-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-btn,
 .delete-btn,
 .pin-icon {
   cursor: pointer;
@@ -404,6 +405,7 @@ select option {
   z-index: 2;
 }
 
+.edit-btn:hover,
 .delete-btn:hover,
 .pin-icon:hover {
   background-color: var(--icon-hover);
