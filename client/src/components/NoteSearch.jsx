@@ -1,8 +1,24 @@
 import React from 'react'
 import { HiPlusCircle } from 'react-icons/hi'
+import { NoteState } from '../Context'
 
 
-const NoteSearch = ({ open, setOpen, handleSearchNote, handleCategorySort}) => {
+const NoteSearch = (
+    { handleSearchNote, handleCategorySort,
+        //  open, setOpen
+        }
+    ) => {
+    const {
+        open,
+        setOpen,
+        // handleSearchNote, 
+        // searchText,
+        // setSearchText,
+        // setFilterCategory,
+        // handleCategorySort
+    } = NoteState();
+
+    
     return (
         <div className="note-search">
         <div className="note-search-container">

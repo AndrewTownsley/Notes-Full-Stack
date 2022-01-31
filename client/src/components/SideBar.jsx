@@ -1,19 +1,9 @@
 import NoteInput from "./NoteInput";
 import NoteHistory from "./NoteHistory";
+import { NoteState } from "../Context";
 
-const SideBar = ({ 
-    handleTextChange, 
-    handleTitleChange,
-    noteText, 
-    noteTitle,
-    setTitleState,
-    titleState,
-    setCategory,
-    saveNote, 
-    notesArray,
-    deleteNote,
-    open
-    }) => {
+const SideBar = () => {
+        const {handleTextChange, handleTitleChange, noteText, noteTitle, setCategory, saveNote, notesArray, deleteNote, open} = NoteState();
 
     return (
         <div className={open ? "sidebar openSidebar" : "sidebar"}>
@@ -22,8 +12,6 @@ const SideBar = ({
                 handleTitleChange={handleTitleChange}
                 noteText={noteText}
                 noteTitle={noteTitle}
-                titleState={titleState}
-                setTitleState={setTitleState}
                 setCategory={setCategory}
                 saveNote={saveNote}
             />

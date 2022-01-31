@@ -4,19 +4,45 @@ import axios from "axios";
 import "./App.css";
 import NoteList from './components/NoteList';
 import SideBar from './components/SideBar';
+import { NoteState } from './Context';
 
 
 function App() {
+   const {
+       notesArray,
+  //      noteText, 
+  //      noteTitle, 
+       category, 
+  //      open,
+  //      id,
+  //      openEdit,
+  //      complete,
+   filterCategory,
+  //      searchText,
+  //      setSearchText,
+       setNotesArray,
+  //      setNoteText, 
+  //      setNoteTitle, 
+       setCategory,
+  //      setOpen,
+  //      setComplete,
+  //      setOpenEdit,
+  //      setId,
+  setFilterCategory,
+  //       handleCategorySort,
+  //       handleSearchNote
+     } = NoteState()
+
   const [noteText, setNoteText] = useState('');
   const [noteTitle, setNoteTitle] = useState('');
-  const [category, setCategory] = useState('');
-  const [filterCategory, setFilterCategory] = useState('');
+  // const [category, setCategory] = useState('');
+  // const [filterCategory, setFilterCategory] = useState('');
   const [searchText, setSearchText] = useState('');
   const [open, setOpen] = useState(false);
   const [complete, setComplete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
   const [id, setId] = useState('');
-  const [notesArray, setNotesArray] = useState([])
+  // const [notesArray, setNotesArray] = useState([])
   const characterLimit = 200;
 
   useEffect(() => {
@@ -26,7 +52,7 @@ function App() {
           setNotesArray(res.data);
         })
         .catch((err) => console.log(err))
-  }, [])
+  }, [setNotesArray])
 
 const createNote = () => {
   const date = new Date();

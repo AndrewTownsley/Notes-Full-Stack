@@ -2,13 +2,19 @@ import React, { useRef, useEffect, useState, } from 'react'
 import { useParams } from 'react-router-dom';
 import { FaPlus } from "react-icons/fa"
 import axios from 'axios';
+import { NoteState } from '../Context';
 
 
-const Edit = ({  id, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setOpenEdit, handleEditedNote}) => {
+const Edit = (
+  {  id, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setOpenEdit, handleEditedNote}
+  ) => {
+    // const {
+    //   id, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setOpenEdit, handleEditedNote
+    // } = NoteState();
+
   const [editTitle, setEditTitle] = useState('');
   const [editText, setEditText] = useState('');
   const [editCategory, setEditCategory] = useState('');
-  // const { id } = useParams();
   console.log(notesArray);
   const note = notesArray.find(note => (note._id).toString() === id);
   console.log(note);

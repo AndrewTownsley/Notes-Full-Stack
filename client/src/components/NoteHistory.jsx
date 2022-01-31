@@ -1,9 +1,16 @@
 import { nanoid } from "nanoid";
 import { MdDeleteForever } from 'react-icons/md'
+import { NoteState } from "../Context";
 
 
 
-const NoteHistory = ({ notesArray, deleteNote}) => {
+const NoteHistory = (
+    { notesArray, deleteNote}
+    ) => {
+    // const {
+    //         notesArray,
+    //         deleteNote
+    // } = NoteState();
 
     return (
         <div className="note-history">

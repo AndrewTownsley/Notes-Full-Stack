@@ -1,9 +1,17 @@
 import { MdDeleteForever } from 'react-icons/md';
 import { MdEdit } from 'react-icons/md';
 import { RiCheckLine } from 'react-icons/ri';
+import { NoteState } from '../Context';
 
 
-const Note = ({ id, index, note, deleteNote, completeNote, completeNoteStyle, complete, setComplete, editNote, openEdit, setOpenEdit }) => {
+const Note = (
+  { id, index, note, deleteNote,
+    completeNote, completeNoteStyle, complete, setComplete, editNote, openEdit, setOpenEdit
+   }
+  ) => {
+  // const {
+  //   deleteNote, completeNote, completeNoteStyle, complete, setComplete, editNote, openEdit, setOpenEdit, 
+  // } = NoteState();
 
 
     return (

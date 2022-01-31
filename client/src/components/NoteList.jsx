@@ -2,9 +2,15 @@ import { nanoid } from "nanoid";
 import Note from "./Note";
 import NoteSearch from "./NoteSearch";
 import EditNote from './EditNote';
+import { NoteState } from "../Context";
 
 
-const NoteList = ({ id, handleTitleChange, handleTextChange, noteTitle, noteText, notesArray, setNotesArray, handleSearchNote, handleCategorySort, open, setOpen, deleteNote, complete, setComplete, completeNote, completeNoteStyle, editNote, openEdit, setOpenEdit }) => {
+const NoteList = (
+    { handleSearchNote, id, handleTitleChange, handleTextChange, noteTitle, noteText, notesArray, category, setNotesArray, handleCategorySort, open, setOpen, deleteNote, complete, setComplete, completeNote, completeNoteStyle, editNote, openEdit, setOpenEdit}
+    ) => {
+    // const {
+    //     id, handleTitleChange, handleTextChange, noteTitle, noteText, notesArray, category, setNotesArray, handleCategorySort, open, setOpen, deleteNote, complete, setComplete, completeNote, completeNoteStyle, editNote, openEdit, setOpenEdit
+    // } = NoteState();
 
 
     return(
@@ -13,7 +19,7 @@ const NoteList = ({ id, handleTitleChange, handleTextChange, noteTitle, noteText
             <NoteSearch
                 open={open}
                 setOpen={setOpen}
-                handleSearchNote={handleSearchNote}s
+                handleSearchNote={handleSearchNote}
                 handleCategorySort={handleCategorySort}
             />
 {/* 
