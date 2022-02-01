@@ -6,11 +6,11 @@ import { NoteState } from '../Context';
 
 
 const Edit = (
-  {  id, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setOpenEdit, handleEditedNote}
+  // {  id, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setOpenEdit, handleEditedNote}
   ) => {
-    // const {
-    //   id, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setOpenEdit, handleEditedNote
-    // } = NoteState();
+    const {
+      id, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setOpenEdit, handleEditedNote
+    } = NoteState();
 
   const [editTitle, setEditTitle] = useState('');
   const [editText, setEditText] = useState('');

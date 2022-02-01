@@ -1,9 +1,7 @@
 import { FaPlus } from "react-icons/fa"
 import { NoteState } from "../Context";
 
-const NoteInput = (
-  // { handleTitleChange, handleTextChange, noteTitle, noteText, saveNote, setCategory }
-  ) => {
+const NoteInput = () => {
     const {
       handleTextChange,
       handleTitleChange,
@@ -24,10 +22,10 @@ const NoteInput = (
               <label htmlFor="note-title">
                 </label>
                 <input
-                 onChange={handleTitleChange} 
-                 value={noteTitle} 
-                 type="text" id="note-title" name="note-title" placeholder="Title..." 
-                 autoComplete="off" 
+                  onChange={handleTitleChange} 
+                  value={noteTitle} 
+                  type="text" id="note-title" name="note-title" placeholder="Title..." 
+                  autoComplete="off" 
                 />
               <textarea 
                 onChange={handleTextChange}
@@ -37,8 +35,13 @@ const NoteInput = (
                 name="note" 
                 id="note-input"
                 autoFocus={true} >
-                </textarea>
-                <select className="note-input-select" onChange={handleCategoryChange} name="category" id="categorySelect">
+              </textarea>
+                <select 
+                  className="note-input-select" 
+                  onChange={handleCategoryChange}     
+                  name="category" 
+                  id="categorySelect"
+                >
                   <option value="">Category</option>
                   <option value="Important">Important !</option>
                   <option value="Work">Work</option>
@@ -47,7 +50,13 @@ const NoteInput = (
                   <option value="Personal">Personal</option>
                   <option value="Misc">Misc</option>
                 </select>
-              <button className="save-btn" onClick={saveNote}><FaPlus className="plus"/>Save Note</button>
+              <button 
+                className="save-btn" 
+                onClick={saveNote}
+              >
+                <FaPlus className="plus"/>
+                  Save Note
+              </button>
       </div>
     )
   }

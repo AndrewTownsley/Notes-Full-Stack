@@ -41,91 +41,88 @@ const Context = ({ children}) => {
         setNotesArray(newNotes);
       }
       
-        const saveNote = async () => {
-          const date = new Date();
+    const saveNote = async () => {
+      const date = new Date();
       
-          const newNote = {
-            id: nanoid(),
-            title: noteTitle,
-            text: noteText,
-            category: category,
-            completed: false,
-            date: date.toLocaleDateString()
-          }
+      const newNote = {
+        id: nanoid(),
+        title: noteTitle,
+        text: noteText,
+        category: category,
+        completed: false,
+        date: date.toLocaleDateString()
+      }
       
-          if(noteText.trim().length > 0) {
-      
+        if(noteText.trim().length > 0) {
             axios 
-                .post("http://localhost:8000/api/note" , newNote)  
-                .then((res) => {
-                    createNote(noteText);
-                    setNotesArray([...notesArray, newNote])
-                    setNoteText('');
-                    setNoteTitle('');
-                    setComplete(false);
-                })
-                .catch((err) => {
-                  console.log(err.message)
-                  console.log("ERROR could not create note.");
-                })
+              .post("http://localhost:8000/api/note" , newNote)  
+              .then((res) => {
+                  createNote(noteText);
+                  setNotesArray([...notesArray, newNote])
+                  setNoteText('');
+                  setNoteTitle('');
+                  setComplete(false);
+              })
+              .catch((err) => {
+                console.log(err.message)
+                console.log("ERROR could not create note.");
+              })
         }
       }
 
       
-const deleteNote = ( _id ) => {
-    axios.delete( `http://localhost:8000/api/note/${_id}`)
-    .catch((error) => console.log(error))
-    setNotesArray((notesArray) => {
-      return notesArray.filter((note) => note._id !== _id)
-    })
+    const deleteNote = ( _id ) => {
+        axios.delete( `http://localhost:8000/api/note/${_id}`)
+        .catch((error) => console.log(error))
+        setNotesArray((notesArray) => {
+          return notesArray.filter((note) => note._id !== _id)
+        })
+
+      }
+
+    const completeNote = (index) => {
+      let notesArrayCopy = [...notesArray];
     
-  }
-  
-  const completeNote = (index) => {
-    let notesArrayCopy = [...notesArray];
-  
-    (notesArrayCopy[index].completed)
-    ?
-    (notesArrayCopy[index].completed = false)
-    :
-    (notesArrayCopy[index].completed = true)
-    setNotesArray(notesArrayCopy)
-  }
-  
-  const completeNoteStyle = (index) => {
-    if(notesArray[index].completed) {
-      return "note note-complete"
-    } else {
-      return "note"
+      (notesArrayCopy[index].completed)
+      ?
+      (notesArrayCopy[index].completed = false)
+      :
+      (notesArrayCopy[index].completed = true)
+      setNotesArray(notesArrayCopy)
     }
-  }
-  
-  const editNote = (_id) => {
-    setId(_id);
-    setOpenEdit(true);
-    console.log("edit note function has been called...");
-  } 
-
-
-  const handleTitleChange = (event) => {
-      if(event.target.value.length >= 0) {
-        setNoteTitle(event.target.value);
+    const completeNoteStyle = (index) => {
+      if(notesArray[index].completed) {
+        return "note note-complete"
+      } else {
+        return "note"
       }
     }
-      
-  const handleTextChange = (event) => {
-    if(characterLimit - event.target.value.length >= 0) {
-      setNoteText(event.target.value)
-    }
-  }
+    const editNote = (_id) => {
+      setId(_id);
+      setOpenEdit(true);
+      console.log("edit note function has been called...");
+    } 
+  
+    const handleTitleChange = (event) => {
+        if(event.target.value.length >= 0) {
+          setNoteTitle(event.target.value);
+        }
+      }
 
-  const handleCategorySort = (e) => {
-      console.log("category sort");
-    setFilterCategory(e.target.value);
-  }
+      const handleTextChange = (event) => {
+        if(characterLimit - event.target.value.length >= 0) {
+          setNoteText(event.target.value)
+        }
+      }
+    
+      const handleCategorySort = (e) => {
+          console.log("category sort");
+        setFilterCategory(e.target.value);
+      }
 
   return ( 
-    <NoteContext.Provider value={{ notesArray, noteText, noteTitle, category, open, complete, openEdit, id, filterCategory, searchText, setNotesArray, setSearchText, setNoteText, setNoteTitle, setCategory, setOpen, setComplete, setOpenEdit, setId, setFilterCategory, saveNote, createNote, deleteNote, completeNote, completeNoteStyle, editNote, handleTextChange, handleTitleChange, handleCategorySort }}>
+    <NoteContext.Provider value={{ notesArray, noteText, noteTitle, category, open, complete, openEdit, id, filterCategory, searchText, setNotesArray, setSearchText, setNoteText, setNoteTitle, setCategory, setOpen, setComplete, setOpenEdit, setId, setFilterCategory, saveNote, createNote, deleteNote, completeNote, completeNoteStyle, editNote, handleTextChange, handleTitleChange, handleCategorySort 
+    }}>
             {children}
     </NoteContext.Provider>
   )

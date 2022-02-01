@@ -5,13 +5,14 @@ import { NoteState } from '../Context';
 
 
 const Note = (
-  { id, index, note, deleteNote,
-    completeNote, completeNoteStyle, complete, setComplete, editNote, openEdit, setOpenEdit
+  { id, index, note,
+  //  deleteNote,
+  //   completeNote, completeNoteStyle, complete, setComplete, editNote, openEdit, setOpenEdit
    }
   ) => {
-  // const {
-  //   deleteNote, completeNote, completeNoteStyle, complete, setComplete, editNote, openEdit, setOpenEdit, 
-  // } = NoteState();
+  const {
+    deleteNote, completeNote, completeNoteStyle, complete, setComplete, editNote, openEdit, setOpenEdit, 
+  } = NoteState();
 
 
     return (
