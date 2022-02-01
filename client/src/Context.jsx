@@ -125,7 +125,7 @@ const deleteNote = ( _id ) => {
   }
 
   return ( 
-    <NoteContext.Provider value={{notesArray, noteText, noteTitle, category, open, complete, openEdit, id, filterCategory, searchText, setSearchText, setNotesArray, setNoteText, setNoteTitle, setCategory, setOpen, setComplete, setOpenEdit, setId, setFilterCategory, saveNote, createNote, deleteNote, completeNote, completeNoteStyle, editNote, handleTextChange, handleTitleChange, handleCategorySort }}>
+    <NoteContext.Provider value={{ noteText, noteTitle, category, open, complete, openEdit, id, filterCategory, searchText, setSearchText, setNoteText, setNoteTitle, setCategory, setOpen, setComplete, setOpenEdit, setId, setFilterCategory, saveNote, createNote, deleteNote, completeNote, completeNoteStyle, editNote, handleTextChange, handleTitleChange, handleCategorySort }}>
             {children}
     </NoteContext.Provider>
   )
