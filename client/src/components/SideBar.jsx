@@ -15,10 +15,10 @@ const SideBar = () => {
                 setCategory={setCategory}
                 saveNote={saveNote}
             />
-            <NoteHistory
+            {/* <NoteHistory
                 notesArray={notesArray}
                 deleteNote={deleteNote}
-            />
+            /> */}
         </div>
     )
 }

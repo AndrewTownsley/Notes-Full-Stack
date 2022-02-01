@@ -107,19 +107,18 @@ const deleteNote = ( _id ) => {
   } 
 
 
-    const handleTitleChange = (event) => {
-        if(event.target.value.length >= 0) {
-          setNoteTitle(event.target.value);
-        }
+  const handleTitleChange = (event) => {
+      if(event.target.value.length >= 0) {
+        setNoteTitle(event.target.value);
       }
+    }
       
-      const handleTextChange = (event) => {
-        if(characterLimit - event.target.value.length >= 0) {
-          setNoteText(event.target.value)
-        }
-      }
+  const handleTextChange = (event) => {
+    if(characterLimit - event.target.value.length >= 0) {
+      setNoteText(event.target.value)
+    }
+  }
 
-      
   const handleCategorySort = (e) => {
       console.log("category sort");
     setFilterCategory(e.target.value);
