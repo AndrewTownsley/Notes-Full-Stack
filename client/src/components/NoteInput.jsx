@@ -2,16 +2,16 @@ import { FaPlus } from "react-icons/fa"
 import { NoteState } from "../Context";
 
 const NoteInput = (
-  { handleTitleChange, handleTextChange, noteTitle, noteText, saveNote, setCategory }
+  // { handleTitleChange, handleTextChange, noteTitle, noteText, saveNote, setCategory }
   ) => {
-    // const {
-    //   handleTextChange,
-    //   handleTitleChange,
-    //   noteText,
-    //   noteTitle,
-    //   setCategory,
-    //   saveNote
-    // } = NoteState();
+    const {
+      handleTextChange,
+      handleTitleChange,
+      noteText,
+      noteTitle,
+      setCategory,
+      saveNote
+    } = NoteState();
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);

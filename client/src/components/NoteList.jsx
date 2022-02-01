@@ -6,11 +6,11 @@ import { NoteState } from "../Context";
 
 
 const NoteList = (
-    { handleSearchNote, id, handleTitleChange, handleTextChange, noteTitle, noteText, notesArray, category, setNotesArray, handleCategorySort, open, setOpen, deleteNote, complete, setComplete, completeNote, completeNoteStyle, editNote, openEdit, setOpenEdit}
+     { notesArray, setNotesArray }
     ) => {
-    // const {
-    //     id, handleTitleChange, handleTextChange, noteTitle, noteText, notesArray, category, setNotesArray, handleCategorySort, open, setOpen, deleteNote, complete, setComplete, completeNote, completeNoteStyle, editNote, openEdit, setOpenEdit
-    // } = NoteState();
+    const {
+        id, handleSearchNote, handleCategorySort, handleTitleChange, handleTextChange, noteTitle, noteText, open, setOpen, deleteNote, complete, setComplete, completeNote, completeNoteStyle, editNote, openEdit, setOpenEdit
+    } = NoteState();
 
 
     return(
