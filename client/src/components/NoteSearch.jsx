@@ -5,7 +5,7 @@ import { NoteState } from '../Context'
 
 const NoteSearch = ({ 
         handleSearchNote,
-        filterComplete,
+        // filterComplete,
         // setFilterComplete,
         // sortByComplete
     }) => {
@@ -16,7 +16,7 @@ const NoteSearch = ({
         complete,
         setComplete,
         handleCategorySort,
-        // // sortByComplete,
+        sortByComplete,
         setFilterComplete
     } = NoteState();
 
@@ -41,11 +41,11 @@ const NoteSearch = ({
                 />
 
     
-             <select onChange={(e) => setFilterComplete(e.target.value)} className="note-search-category note-input-select" name="complete-sort" id="complete-sort">
+             <select onChange={(e) =>setFilterComplete(e.target.value)} className="note-search-category note-input-select" name="complete-sort" id="complete-sort">
                 <option value="">Filter Completed Notes</option>
                 <option value="">Show All</option>
-                <option value={true}>Completed</option>
-                <option value={true}>Uncompleted</option>
+                <option value="completed">Completed</option>
+                <option value="uncompleted">Uncompleted</option>
             </select> 
 
          

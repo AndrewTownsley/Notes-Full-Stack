@@ -14,6 +14,7 @@ function App() {
       setNotesArray,
       filterComplete,
       setFilterComplete,
+      sortByComplete,
      } = NoteState()
 
   const [searchText, setSearchText] = useState('');
@@ -42,12 +43,12 @@ function App() {
   //   }
   // }
 
-  useEffect(() => {
-    let notesArrayCopy = [...notesArray];
-    const filteredNotes = notesArrayCopy.filter(note => note.complete === filterComplete);
-    setNotesArray(filteredNotes);
+  // useEffect(() => {
+  //   let notesArrayCopy = [...notesArray];
+  //   const filteredNotes = notesArrayCopy.filter(note => note.complete === filterComplete);
+  //   setNotesArray(filteredNotes);
 
-  }, [filterComplete, setNotesArray])
+  // }, [filterComplete, setNotesArray])
 
   // useEffect(() => {
   //   if (filterComplete === true) {
@@ -61,6 +62,19 @@ function App() {
 
   // }, [ filterComplete, setFilterComplete ]);
 
+//   const sortByComplete = (e) => {
+//     console.log(e.target.value);
+//     switch (e.target.value) {
+//       case "completed": 
+//         setNotesArray(notesArray.filter((note) => note.complete));
+//         break;
+//       case "uncompleted":
+//         setNotesArray(notesArray.filter((note) => !note.complete));
+//         break;
+//         default: 
+//         setNotesArray(notesArray);
+//   }
+// }
 
   console.log(notesArray);
 
