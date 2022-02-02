@@ -17,7 +17,7 @@ const Context = ({ children}) => {
     const [openEdit, setOpenEdit] = useState(false);
     const [id, setId] = useState('');
     const [filterCategory, setFilterCategory] = useState('');
-    // const [filterComplete, setFilterComplete] = useState('');
+    const [filterComplete, setFilterComplete] = useState(null);
     const characterLimit = 200;
 
     useEffect(() => {
@@ -162,7 +162,7 @@ const Context = ({ children}) => {
       // }
 
   return ( 
-    <NoteContext.Provider value={{ notesArray, noteText, noteTitle, category, open, complete, openEdit, id, filterCategory, searchText, setNotesArray, setSearchText, setNoteText, setNoteTitle, setCategory, setOpen, setComplete, setOpenEdit, setId, setFilterCategory, saveNote, createNote, deleteNote, completeNote, completeNoteStyle, editNote, handleTextChange, handleTitleChange, handleCategorySort
+    <NoteContext.Provider value={{ notesArray, noteText, noteTitle, category, open, complete, openEdit, id, filterCategory, searchText, setNotesArray, setSearchText, setNoteText, setNoteTitle, setCategory, setOpen, setComplete, setOpenEdit, setId, setFilterCategory, saveNote, createNote, deleteNote, completeNote, completeNoteStyle, editNote, handleTextChange, handleTitleChange, handleCategorySort, filterComplete, setFilterComplete
     }}>
             {children}
     </NoteContext.Provider>

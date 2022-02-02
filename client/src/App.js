@@ -12,10 +12,12 @@ function App() {
       complete,
       filterCategory,
       setNotesArray,
+      filterComplete,
+      setFilterComplete,
      } = NoteState()
 
   const [searchText, setSearchText] = useState('');
-  const [filterComplete, setFilterComplete] = useState(false);
+  // const [filterComplete, setFilterComplete] = useState();
   console.log(filterComplete);
 
   useEffect(() => {
@@ -28,15 +30,36 @@ function App() {
   }, [setNotesArray])
 
 
-  // write a useEffect function to filter the notes based on the complete status,
-  //then rerender the notesArray
+  // write function to filter notes by complete status
+
+  // const filterByComplete = () => {
+  //   if (filterComplete === false) {
+  //     return notesArray.filter(note => note.complete === false)
+  //   } else if (filterComplete === true) {
+  //     return notesArray.filter(note => note.complete === true)
+  //   } else {
+  //     return notesArray
+  //   }
+  // }
+
   useEffect(() => {
-    if (filterComplete === true) {
-      setNotesArray(notesArray.filter((note) => note.complete === true));
-    } else {
-      setNotesArray(notesArray.filter((note) => note.complete === false));
-    }
-  }, [ filterComplete])
+    let notesArrayCopy = [...notesArray];
+    const filteredNotes = notesArrayCopy.filter(note => note.complete === filterComplete);
+    setNotesArray(filteredNotes);
+
+  }, [filterComplete, setNotesArray])
+
+  // useEffect(() => {
+  //   if (filterComplete === true) {
+  //     setNotesArray(notesArray.filter((note) => note.complete === true));
+  //   } else if (filterComplete === false) {
+  //     setNotesArray(notesArray.filter((note) => note.complete === false));
+  //   } else {
+  //     setNotesArray(notesArray);
+  //   }
+  //   console.log("sort complete");
+
+  // }, [ filterComplete, setFilterComplete ]);
 
 
   console.log(notesArray);
@@ -45,17 +68,16 @@ function App() {
     <div className="App">
         <SideBar />
         <NoteList 
-        // switch statement to filter notes based on complete status and category
          notesArray={
             filterCategory === "" ? notesArray.filter(note => note.text.toLowerCase().includes(searchText)) 
             :
             notesArray.filter(note => note.text.toLowerCase().includes(searchText)) &&
-            notesArray.filter(note => note.complete !== filterComplete)
+            notesArray.filter(note => note.category === filterCategory)
             }
           setNotesArray={setNotesArray}
           handleSearchNote={setSearchText}
-          filterComplete={filterComplete}
-          setFilterComplete={setFilterComplete}
+          // filterComplete={filterComplete}
+          // setFilterComplete={setFilterComplete}
           // sortByComplete={sortByComplete}
         /> 
     </div>
