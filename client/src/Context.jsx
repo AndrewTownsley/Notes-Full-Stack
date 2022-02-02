@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { nanoid } from "nanoid";
+import useLocalStorage from './components/useLocalStorage';
 import axios from "axios"; 
 
 export const NoteContext = createContext(undefined);
@@ -27,6 +28,9 @@ const Context = ({ children}) => {
             .catch((err) => console.log(err))
       }, [])
 
+
+      // save completed property to database on post
+      
     const createNote = () => {
         const date = new Date();
         const newNote = {
@@ -34,12 +38,15 @@ const Context = ({ children}) => {
           title: noteTitle,
           text: noteText,
           category: category,
-          completed: false,
+          completed: complete ? true : false,
           date: date.toLocaleDateString()
         }
         const newNotes = [...notesArray, newNote]
         setNotesArray(newNotes);
       }
+      
+
+      // save completed property to local storage
       
     const saveNote = async () => {
       const date = new Date();
@@ -49,7 +56,7 @@ const Context = ({ children}) => {
         title: noteTitle,
         text: noteText,
         category: category,
-        completed: false,
+        completed: complete ? true : false,
         date: date.toLocaleDateString()
       }
       
@@ -80,23 +87,51 @@ const Context = ({ children}) => {
 
       }
 
-    const completeNote = (index) => {
-      let notesArrayCopy = [...notesArray];
-    
-      (notesArrayCopy[index].completed)
-      ?
-      (notesArrayCopy[index].completed = false)
-      :
-      (notesArrayCopy[index].completed = true)
-      setNotesArray(notesArrayCopy)
-    }
-    const completeNoteStyle = (index) => {
-      if(notesArray[index].completed) {
-        return "note note-complete"
-      } else {
-        return "note"
+
+      const completeNote = (index) => {
+        const newNotesArray = [...notesArray];
+        newNotesArray[index].complete = !newNotesArray[index].complete;
+        setNotesArray(newNotesArray);
+        axios 
+            .put(`http://localhost:8000/api/note/${newNotesArray[index]._id}`, newNotesArray[index])
+            .then((res) => {
+              console.log(res)
+            })
+            .catch((err) => console.log(err))
       }
-    }
+
+      const completeNoteStyle = (index) => {
+        const newNotesArray = [...notesArray];
+        if (newNotesArray[index].complete) {
+          return 'note note-complete'
+        } else {
+          return 'note'
+        }
+      }
+
+    // const completeNote = (index) => {
+    //   let notesArrayCopy = [...notesArray];
+    
+    //   (notesArrayCopy[index].completed)
+    //   ?
+    //   (notesArrayCopy[index].completed = false)
+    //   :
+    //   (notesArrayCopy[index].completed = true)
+    //   setNotesArray(notesArrayCopy)
+    //   // save setComplete state to local storage
+    //   localStorage.setItem('complete', JSON.stringify(complete))
+    // }
+
+
+
+    // const completeNoteStyle = (index) => {
+    //   if(notesArray[index].completed) {
+    //     return "note note-complete"
+    //   } else {
+    //     return "note"
+    //   }
+    // }
+    
     const editNote = (_id) => {
       setId(_id);
       setOpenEdit(true);
