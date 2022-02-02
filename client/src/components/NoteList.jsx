@@ -7,7 +7,10 @@ import { NoteState } from "../Context";
 
 const NoteList = ({
         notesArray,
-        handleSearchNote 
+        handleSearchNote,
+        filterComplete,
+        setFilterComplete,
+        // sortByComplete
     }) => {
 
     const {
@@ -26,6 +29,9 @@ const NoteList = ({
                 setOpen={setOpen}
                 handleSearchNote={handleSearchNote}
                 handleCategorySort={handleCategorySort}
+                filterComplete={filterComplete}
+                setFilterComplete={setFilterComplete}
+                // sortByComplete={sortByComplete}
             />
 
             {
