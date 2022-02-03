@@ -158,21 +158,30 @@ const Context = ({ children}) => {
 
       useEffect(() => {
 
+        // const sortByComplete = (e) => {
+        //   if(filterComplete === "complete") {
+        //     setNotesArray(notesArray.filter((note) => note.complete))
+        //   } else if
+        //     (filterComplete === "uncomplete") {
+        //       setNotesArray(notesArray.filter((note) => !note.complete))
+        //     } else 
+        //       setNotesArray(notesArray)
+        //   }
         const sortByComplete = (e) => {
           switch (filterComplete) {
             case "completed": 
             setNotesArray(notesArray.filter((note) => note.complete));
-            break;
+            return;
             case "uncompleted":
               setNotesArray(notesArray.filter((note) => !note.complete));
-              break;
+              return;
               default: 
               setNotesArray(notesArray);
               break;
             }
           }
           sortByComplete()
-        }, [filterComplete, notesArray])
+        }, [filterComplete])
 
   return ( 
     <NoteContext.Provider value={{ notesArray, noteText, noteTitle, category, open, complete, openEdit, id, filterCategory, searchText, setNotesArray, setSearchText, setNoteText, setNoteTitle, setCategory, setOpen, setComplete, setOpenEdit, setId, setFilterCategory, saveNote, createNote, deleteNote, completeNote, completeNoteStyle, editNote, handleTextChange, handleTitleChange, handleCategorySort, filterComplete, setFilterComplete
