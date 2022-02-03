@@ -181,7 +181,8 @@ const Context = ({ children}) => {
             }
           }
           sortByComplete()
-        }, [filterComplete])
+          // try putting a dependency into the dependency array that is not an object
+        }, [filterComplete, notesArray])
 
   return ( 
     <NoteContext.Provider value={{ notesArray, noteText, noteTitle, category, open, complete, openEdit, id, filterCategory, searchText, setNotesArray, setSearchText, setNoteText, setNoteTitle, setCategory, setOpen, setComplete, setOpenEdit, setId, setFilterCategory, saveNote, createNote, deleteNote, completeNote, completeNoteStyle, editNote, handleTextChange, handleTitleChange, handleCategorySort, filterComplete, setFilterComplete
