@@ -4,19 +4,13 @@ import { NoteState } from '../Context'
 
 
 const NoteSearch = ({ 
-        handleSearchNote,
-        // filterComplete,
-        // setFilterComplete,
-        // sortByComplete
+        handleSearchNote
     }) => {
 
     const {
         open,
         setOpen,
-        complete,
-        setComplete,
         handleCategorySort,
-        sortByComplete,
         setFilterComplete
     } = NoteState();
 

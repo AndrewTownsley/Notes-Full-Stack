@@ -10,7 +10,6 @@ const NoteList = ({
         handleSearchNote,
         filterComplete,
         setFilterComplete,
-        // sortByComplete
     }) => {
 
     const {
@@ -31,7 +30,6 @@ const NoteList = ({
                 handleCategorySort={handleCategorySort}
                 filterComplete={filterComplete}
                 setFilterComplete={setFilterComplete}
-                // sortByComplete={sortByComplete}
             />
 
             {

@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { nanoid } from "nanoid";
-import useLocalStorage from './components/useLocalStorage';
 import axios from "axios"; 
 
 export const NoteContext = createContext(undefined);
@@ -28,9 +27,6 @@ const Context = ({ children}) => {
             })
             .catch((err) => console.log(err))
       }, [])
-
-
-      // save completed property to database on post
       
     const createNote = () => {
         const date = new Date();
@@ -109,29 +105,6 @@ const Context = ({ children}) => {
           return 'note'
         }
       }
-
-    // const completeNote = (index) => {
-    //   let notesArrayCopy = [...notesArray];
-    
-    //   (notesArrayCopy[index].completed)
-    //   ?
-    //   (notesArrayCopy[index].completed = false)
-    //   :
-    //   (notesArrayCopy[index].completed = true)
-    //   setNotesArray(notesArrayCopy)
-    //   // save setComplete state to local storage
-    //   localStorage.setItem('complete', JSON.stringify(complete))
-    // }
-
-
-
-    // const completeNoteStyle = (index) => {
-    //   if(notesArray[index].completed) {
-    //     return "note note-complete"
-    //   } else {
-    //     return "note"
-    //   }
-    // }
     
     const editNote = (_id) => {
       setId(_id);
@@ -157,16 +130,6 @@ const Context = ({ children}) => {
       }
 
       useEffect(() => {
-
-        // const sortByComplete = (e) => {
-        //   if(filterComplete === "complete") {
-        //     setNotesArray(notesArray.filter((note) => note.complete))
-        //   } else if
-        //     (filterComplete === "uncomplete") {
-        //       setNotesArray(notesArray.filter((note) => !note.complete))
-        //     } else 
-        //       setNotesArray(notesArray)
-        //   }
         const sortByComplete = (e) => {
           switch (filterComplete) {
             case "completed": 

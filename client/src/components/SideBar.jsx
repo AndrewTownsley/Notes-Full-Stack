@@ -1,5 +1,4 @@
 import NoteInput from "./NoteInput";
-import NoteHistory from "./NoteHistory";
 import { NoteState } from "../Context";
 
 const SideBar = () => {

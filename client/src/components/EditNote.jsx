@@ -1,15 +1,12 @@
 import React, { useRef, useEffect, useState, } from 'react'
-import { useParams } from 'react-router-dom';
 import { FaPlus } from "react-icons/fa"
 import axios from 'axios';
 import { NoteState } from '../Context';
 
 
-const Edit = (
-  // {  id, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setOpenEdit, handleEditedNote}
-  ) => {
+const Edit = () => {
     const {
-      id, notesArray, setNotesArray, _id, noteText, noteTitle, createNote, setNoteText, setNoteTitle, setOpenEdit, handleEditedNote
+      id, notesArray, setNotesArray, setOpenEdit
     } = NoteState();
 
   const [editTitle, setEditTitle] = useState('');
@@ -38,8 +35,7 @@ useEffect(() => {
   }
 }, [note, setEditTitle, setEditText])
 
-const handleSubmit = (e,  _id) => {
-  // e.preventDefault();
+const handleSubmit = (_id) => {
   console.log(id);
   const updatedNote = { _id, title: editTitle, text: editText, category: editCategory }
   console.log("edit form submitted...");
