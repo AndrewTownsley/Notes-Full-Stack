@@ -508,6 +508,7 @@ select option {
   .note-input {
     margin: 0.5rem;
     width: 80%;
+    z-index: 3;
   }
 
   .note-input h1 {
@@ -534,6 +535,7 @@ select option {
     display: flex;
     flex-direction: column;
     padding: 0 0.5rem;
+    z-index: -1;
   }
 
   .note-search-container {
