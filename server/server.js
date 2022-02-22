@@ -9,7 +9,6 @@ require("dotenv").config({ path: './env'});
 
 const app = express();
 
-// Routes...
 const note = require("./routes/note"); 
 
 connectDB();
