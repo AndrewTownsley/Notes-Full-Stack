@@ -21,7 +21,6 @@ exports.postCreateNote = (req, res) => {
 };
 
 exports.completeUpdateNote = (req, res) => {
-    console.log(req)
     Note.findByIdAndUpdate(req.params.id, req.body)
         .then((data) => res.json({ message: "Note Completed Successfuly", data}))
         .catch((err) => 
@@ -32,7 +31,6 @@ exports.completeUpdateNote = (req, res) => {
 };
 
 exports.deleteNote = (req, res) => {
-    // console.log(req);
     Note.findByIdAndRemove(req.params.id, req.body)
         .then((data) => res.json({ message: "Note Deleted Successfully", data}))
         .catch((err) => 
