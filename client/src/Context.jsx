@@ -41,10 +41,7 @@ const Context = ({ children}) => {
         const newNotes = [...notesArray, newNote]
         setNotesArray(newNotes);
       }
-      
-
-      // save completed property to local storage
-      
+            
     const saveNote = async () => {
       const date = new Date();
       

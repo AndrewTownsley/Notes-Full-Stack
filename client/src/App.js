@@ -11,11 +11,9 @@ function App() {
       notesArray,
       filterCategory,
       setNotesArray,
-      filterComplete,
      } = NoteState()
 
   const [searchText, setSearchText] = useState('');
-  console.log(filterComplete);
 
   useEffect(() => {
     axios 
@@ -25,8 +23,6 @@ function App() {
         })
         .catch((err) => console.log(err))
   }, [setNotesArray])
-
-  console.log(notesArray);
 
   return (
     <div className="App">
