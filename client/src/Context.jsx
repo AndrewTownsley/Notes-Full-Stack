@@ -21,7 +21,7 @@ const Context = ({ children}) => {
 
     useEffect(() => {
         axios 
-            .get("http://localhost:8000/api/note")
+            .get("/api/note")
             .then((res) => {
               setNotesArray(res.data);
             })
@@ -56,7 +56,7 @@ const Context = ({ children}) => {
       
         if(noteText.trim().length > 0) {
             axios 
-              .post("http://localhost:8000/api/note" , newNote)  
+              .post("/api/note" , newNote)  
               .then((res) => {
                   createNote(noteText);
                   setNotesArray([...notesArray, newNote])
