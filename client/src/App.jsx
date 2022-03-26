@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8000/api/note')
+      .get('/api/note')
       .then((res) => {
         setNotesArray(res.data);
       })
