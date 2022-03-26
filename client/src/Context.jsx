@@ -18,6 +18,7 @@ const Context = ({ children}) => {
     const [filterCategory, setFilterCategory] = useState('');
     const [filterComplete, setFilterComplete] = useState(null);
     const characterLimit = 200;
+    
 
     useEffect(() => {
         axios 
