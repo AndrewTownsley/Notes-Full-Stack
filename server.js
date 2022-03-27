@@ -14,6 +14,7 @@ const note = require("./routes/note");
 connectDB();
 
 app.use("/api/note", note);
+const PORT = process.env.PORT || 8000;
 app.use(express.static(path.join(__dirname, './client/build')))
 console.log(__dirname)
 app.use(cors({ origin: true, credentials: true}));
@@ -30,7 +31,6 @@ app.get('*', (req, res) => {
 
 // Use Routes...
 
-const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)
