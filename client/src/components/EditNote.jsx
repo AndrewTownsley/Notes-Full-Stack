@@ -36,7 +36,7 @@ useEffect(() => {
 const handleSubmit = (_id) => {
   const updatedNote = { _id, title: editTitle, text: editText, category: editCategory }
   axios 
-    .put(`http://localhost:8000/api/note/${id}` , updatedNote)  
+    // .put(`http://localhost:8000/api/note/${id}` , updatedNote)  
     .put(`/api/note/${id}` , updatedNote)  
     .then((res) => {
       setNotesArray(notesArray.map(note => note._id === _id ? { ...res.data } : note))
