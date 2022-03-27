@@ -450,6 +450,7 @@ select option {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: space-between;
     width: 100%;
   }
 
@@ -458,10 +459,20 @@ select option {
     width: 310px;
   }
 
-  .note-search-input {
+  .note-search input {
     width: 247px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem;
   }
+
+  .note-input-select {
+    margin-bottom: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  /* .note-search-category {
+    margin-top: 0.5rem;
+  } */
 
   .notes-list {
     display: grid;
@@ -592,7 +603,7 @@ select option {
   .note-search-category {
     max-width: 100%;
     width: 80%;
-    margin: 1rem auto;
+    margin: 0.4rem auto;
   }
 
   .note-search-mobile-header {

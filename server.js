@@ -14,6 +14,7 @@ const note = require("./routes/note");
 connectDB();
 
 app.use(express.static(path.join(__dirname, './client/build')))
+console.log(__dirname)
 app.use(cors({ origin: true, credentials: true}));
 app.use(morgan("dev"));
 app.use(express.json({ extended: false }));
