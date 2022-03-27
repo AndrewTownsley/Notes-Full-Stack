@@ -27,7 +27,7 @@ const Context = ({ children}) => {
         // .get("http://localhost:8000/api/note")
             .get("/api/note")
             .then((res) => {
-              console.log(res.data);
+              console.log(res.json());
               setNotesArray(res.data);
               setIsLoading(false);
             })
