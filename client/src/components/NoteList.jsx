@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 import Note from "./Note";
 import NoteSearch from "./NoteSearch";
 import EditNote from './EditNote';
+import Loading from "./Loading";
 import { NoteState } from "../Context";
 
 
@@ -17,6 +18,8 @@ const NoteList = ({
         open, 
         setOpen, 
         openEdit,
+        isLoading,
+        setIsLoading,
     } = NoteState();
 
 
@@ -37,19 +40,21 @@ const NoteList = ({
                 (
                     <EditNote />
                 )
-                : 
-                (
-                    <div className="notes-list">
+                :
+                    (
+                        <div className="notes-list">
                         {notesArray.map((note, index) => {
                             return  <Note 
-                                        index={index}
-                                        key={nanoid()}
-                                        id={nanoid()}
-                                        note={note}
-                                    />
-                })}
-            </div>
-                )
+                            index={index}
+                            key={nanoid()}
+                            id={nanoid()}
+                            note={note}
+                            />
+                        })}
+                        </div>
+                    
+                    )
+                
             }
         </section>
     )

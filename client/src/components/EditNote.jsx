@@ -6,15 +6,13 @@ import { NoteState } from '../Context';
 
 const Edit = () => {
     const {
-      id, notesArray, setNotesArray, setOpenEdit
+      id, notesArray, setNotesArray, setOpenEdit, isLoading, setIsLoading,
     } = NoteState();
 
   const [editTitle, setEditTitle] = useState('');
   const [editText, setEditText] = useState('');
   const [editCategory, setEditCategory] = useState('');
-  console.log(notesArray);
   const note = notesArray.find(note => (note._id).toString() === id);
-  console.log(note);
 
   const modalRef = useRef(null);
 
@@ -36,20 +34,17 @@ useEffect(() => {
 }, [note, setEditTitle, setEditText])
 
 const handleSubmit = (_id) => {
-  console.log(id);
   const updatedNote = { _id, title: editTitle, text: editText, category: editCategory }
-  console.log("edit form submitted...");
   axios 
     .put(`http://localhost:8000/api/note/${id}` , updatedNote)  
     .then((res) => {
       setNotesArray(notesArray.map(note => note._id === _id ? { ...res.data } : note))
       setEditTitle("");
       setEditText("");
-    console.log("put request successful");
         })
         .catch((err) => {
           console.log(err.message)
-          console.log("ERROR could not create note.");
+          console.log("ERROR could not create note.")
         })
 }
 

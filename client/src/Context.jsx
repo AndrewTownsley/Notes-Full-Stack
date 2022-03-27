@@ -17,16 +17,21 @@ const Context = ({ children}) => {
     const [id, setId] = useState('');
     const [filterCategory, setFilterCategory] = useState('');
     const [filterComplete, setFilterComplete] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
     const characterLimit = 200;
     
 
     useEffect(() => {
+      setIsLoading(true);
         axios 
-            .get("/api/note")
+        // .get("http://localhost:8000/api/note")
+            .get("api/note")
             .then((res) => {
               setNotesArray(res.data);
+              setIsLoading(false);
             })
             .catch((err) => console.log(err))
+            .finally(() => setIsLoading(false));
       }, [])
       
     const createNote = () => {
@@ -57,7 +62,8 @@ const Context = ({ children}) => {
       
         if(noteText.trim().length > 0) {
             axios 
-              .post("/api/note" , newNote)  
+              .post("http://localhost:8000/api/note" , newNote)  
+              // .post("/api/note" , newNote)  
               .then((res) => {
                   createNote(noteText);
                   setNotesArray([...notesArray, newNote])
@@ -74,7 +80,8 @@ const Context = ({ children}) => {
 
       
     const deleteNote = ( _id ) => {
-        axios.delete( `/api/note/${_id}`)
+        axios.delete( `http://localhost:8000/api/note/${_id}`)
+        // axios.delete( `/api/note/${_id}`)
         .catch((error) => console.log(error))
         setNotesArray((notesArray) => {
           return notesArray.filter((note) => note._id !== _id)
@@ -88,10 +95,8 @@ const Context = ({ children}) => {
         newNotesArray[index].complete = !newNotesArray[index].complete;
         setNotesArray(newNotesArray);
         axios 
-            .put(`/api/note/${newNotesArray[index]._id}`, newNotesArray[index])
-            .then((res) => {
-              console.log(res)
-            })
+            .put(`http://localhost:8000/api/note/${newNotesArray[index]._id}`, newNotesArray[index])
+            // .put(`/api/note/${newNotesArray[index]._id}`, newNotesArray[index])
             .catch((err) => console.log(err))
       }
 
@@ -107,7 +112,6 @@ const Context = ({ children}) => {
     const editNote = (_id) => {
       setId(_id);
       setOpenEdit(true);
-      console.log("edit note function has been called...");
     } 
   
     const handleTitleChange = (event) => {
@@ -146,7 +150,7 @@ const Context = ({ children}) => {
         }, [filterComplete, notesArray])
 
   return ( 
-    <NoteContext.Provider value={{ notesArray, noteText, noteTitle, category, open, complete, openEdit, id, filterCategory, searchText, setNotesArray, setSearchText, setNoteText, setNoteTitle, setCategory, setOpen, setComplete, setOpenEdit, setId, setFilterCategory, saveNote, createNote, deleteNote, completeNote, completeNoteStyle, editNote, handleTextChange, handleTitleChange, handleCategorySort, filterComplete, setFilterComplete
+    <NoteContext.Provider value={{ notesArray, noteText, noteTitle, category, open, complete, openEdit, id, filterCategory, searchText, isLoading, setIsLoading, setNotesArray, setSearchText, setNoteText, setNoteTitle, setCategory, setOpen, setComplete, setOpenEdit, setId, setFilterCategory, saveNote, createNote, deleteNote, completeNote, completeNoteStyle, editNote, handleTextChange, handleTitleChange, handleCategorySort, filterComplete, setFilterComplete
     }}>
         {children}
     </NoteContext.Provider>
