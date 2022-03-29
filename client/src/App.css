@@ -308,7 +308,7 @@ select option {
 .edit-modal-close-btn {
   position: absolute;
   top: 23px;
-  right: 3;
+  right: 3px;
   border: none;
   outline: none;
   background-color: var(--bg-primary);
@@ -317,7 +317,7 @@ select option {
   cursor: pointer;
   padding: 5px;
   border-radius: 3px;
-  transition: var(--trans-reg);
+  transition: var(--trans-fast);
 }
 
 .edit-modal-close-btn:hover {
