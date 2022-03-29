@@ -37,7 +37,7 @@ const handleSubmit = (_id) => {
   const updatedNote = { _id, title: editTitle, text: editText, category: editCategory }
   axios 
     // .put(`http://localhost:8000/api/note/${id}` , updatedNote)  
-    .put(`/api/note/${id}` , updatedNote)  
+    .put(`/api/note/${_id}` , updatedNote)  
     .then((res) => {
       setNotesArray(notesArray.map(note => note._id === _id ? { ...res.data } : note))
       setEditTitle("");
@@ -75,8 +75,8 @@ const handleSubmit = (_id) => {
               rows="6" cols="20" 
               placeholder="Enter note here..." 
               >
-              </textarea>
-              <select className="note-input-select" onChange={(e) => setEditCategory(e.target.value)} name="category" id="categorySelect">
+            </textarea>
+            <select className="note-input-select" onChange={(e) => setEditCategory(e.target.value)}     name="category" id="categorySelect">
                   <option value="">Category</option>
                   <option value="Important">Important !</option>
                   <option value="Work">Work</option>
@@ -84,7 +84,7 @@ const handleSubmit = (_id) => {
                   <option value="Home">Home</option>
                   <option value="Personal">Personal</option>
                   <option value="Misc">Misc</option>
-                </select>
+            </select>
             <button 
                 type="submit" 
                 className="save-btn" 

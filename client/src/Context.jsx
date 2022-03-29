@@ -111,6 +111,7 @@ const Context = ({ children}) => {
       }
     
     const editNote = (_id) => {
+      console.log('edit note function');
       setId(_id);
       setOpenEdit(true);
     } 
