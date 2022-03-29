@@ -53,10 +53,15 @@ const handleSubmit = (_id) => {
       return (
         <div className="edit-window">
         <div ref={modalRef} className="note-input note-edit" onClick={() => setOpenEdit(true)}   >
-        <button className='edit-modal-close-btn' onClick={() => setOpenEdit(false)}>Close</button>    
             <form 
               onSubmit={(e) => handleSubmit(id)} 
               className='edit'>
+            <button 
+              className='edit-modal-close-btn' 
+              onClick={() => setOpenEdit(false)}
+            >
+              Close
+            </button>    
             <label htmlFor="note-title">
               </label>
               <input
