@@ -5,16 +5,16 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const router = express.Router();
 const path = require('path');
-const app = express();
 require("dotenv").config({ path: './env'});
+const app = express();
 const PORT = process.env.PORT || 8000;
 app.use(cors({ origin: true, credentials: true}));
 app.use(express.json({ extended: false }));
 app.use(morgan("dev"));
 
 
-app.use("/api/note", note);
 const note = require("./routes/note"); 
+app.use("/api/note", note);
 
 connectDB();
 
