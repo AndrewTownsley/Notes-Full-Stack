@@ -305,13 +305,18 @@ select option {
 }
 
 .edit-modal-close-btn {
+  position: absolute;
+  top: 23px;
+  right: 3;
   border: none;
   outline: none;
   background-color: var(--bg-primary);
   color: var(--font-main-clr);
+  font-weight: bold;
   cursor: pointer;
   padding: 5px;
   border-radius: 3px;
+  transition: var(--trans-reg);
 }
 
 .edit-modal-close-btn:hover {
