@@ -90,7 +90,7 @@ const handleSubmit = (_id) => {
                 className="save-btn" 
                 // onClick={() => saveEditedNote(note.id)}
             ><FaPlus className="plus"/>Save Note</button>
-            <button onClick={() => setOpenEdit(false)}>close</button>    
+            <button onClick={() => setOpenEdit(false)}>BUTTON!@#</button>    
         </form>
     </div>
   </div>
