@@ -307,7 +307,7 @@ select option {
 
 .edit-modal-close-btn {
   position: absolute;
-  top: 23px;
+  top: 5px;
   right: 3px;
   border: none;
   outline: none;
