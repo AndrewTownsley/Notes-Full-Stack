@@ -5,21 +5,20 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const router = express.Router();
 const path = require('path');
-require("dotenv").config({ path: './env'});
-
 const app = express();
+require("dotenv").config({ path: './env'});
+const PORT = process.env.PORT || 8000;
+app.use(cors({ origin: true, credentials: true}));
+app.use(express.json({ extended: false }));
+app.use(morgan("dev"));
 
+
+app.use("/api/note", note);
 const note = require("./routes/note"); 
 
 connectDB();
 
-app.use("/api/note", note);
-const PORT = process.env.PORT || 8000;
 app.use(express.static(path.join(__dirname, './client/build')))
-console.log(__dirname)
-app.use(cors({ origin: true, credentials: true}));
-app.use(morgan("dev"));
-app.use(express.json({ extended: false }));
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './client', 'build', 'index.html'))
