@@ -304,6 +304,24 @@ select option {
   background-color: #fff;
 }
 
+.edit-modal-close-btn {
+  border: none;
+  outline: none;
+  background-color: var(--bg-primary);
+  color: var(--font-main-clr);
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.edit-modal-close-btn:hover {
+  background-color: var(--icon-hover);
+  outline: var(--input-outline);
+}
+.edit-modal-close-btn:focus {
+  outline: var(--input-outline);
+}
+
 .note-search-container {
   background-color: var(--bg-primary);
   display: flex;

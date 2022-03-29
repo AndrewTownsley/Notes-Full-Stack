@@ -37,7 +37,7 @@ const handleSubmit = (_id) => {
   const updatedNote = { _id, title: editTitle, text: editText, category: editCategory }
   axios 
     // .put(`http://localhost:8000/api/note/${id}` , updatedNote)  
-    .put(`/api/note/${_id}` , updatedNote)  
+    .put(`/api/note/${id}` , updatedNote)  
     .then((res) => {
       setNotesArray(notesArray.map(note => note._id === _id ? { ...res.data } : note))
       setEditTitle("");
@@ -47,12 +47,13 @@ const handleSubmit = (_id) => {
           console.log(err.message)
           console.log("ERROR could not create note.")
         })
-}
-
-
-    return (
-      <div className="edit-window">
+      }
+      
+      
+      return (
+        <div className="edit-window">
         <div ref={modalRef} className="note-input note-edit" onClick={() => setOpenEdit(true)}   >
+        <button className='edit-modal-close-btn' onClick={() => setOpenEdit(false)}>Close</button>    
             <form 
               onSubmit={(e) => handleSubmit(id)} 
               className='edit'>
@@ -90,7 +91,6 @@ const handleSubmit = (_id) => {
                 className="save-btn" 
                 // onClick={() => saveEditedNote(note.id)}
             ><FaPlus className="plus"/>Save Note</button>
-            <button onClick={() => setOpenEdit(false)}>BUTTON!@#</button>    
         </form>
     </div>
   </div>
