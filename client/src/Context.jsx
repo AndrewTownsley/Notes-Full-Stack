@@ -63,10 +63,9 @@ const Context = ({ children}) => {
       
         if(noteText.trim().length > 0) {
             axios 
-              .post("http://localhost:8000/api/note" , newNote)  
-              // .post("/api/note" , newNote)  
+              // .post("http://localhost:8000/api/note" , newNote)  
+              .post("/api/note" , newNote)  
               .then((res) => {
-                console.log('note posted...');
                   createNote(noteText);
                   setNotesArray([ ...notesArray, ...newNote])
                   setNoteText('');
