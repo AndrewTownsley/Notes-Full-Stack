@@ -26,7 +26,7 @@ const Note = (
                   
             </div>
             <p>{note.text}</p>
-            <p>{note.text.substring(0, 50)}</p>
+            {/* <p>{note.text.substring(0, 50)}</p> */}
             <div className="note-footer">
               <p>{note.date}</p>
               <div className="note-footer-icon-container">
