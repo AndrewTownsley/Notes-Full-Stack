@@ -67,7 +67,7 @@ const Context = ({ children}) => {
               // .post("/api/note" , newNote)  
               .then((res) => {
                   createNote(noteText);
-                  setNotesArray([...newNote, ...notesArray])
+                  setNotesArray([ ...notesArray, ...newNote])
                   setNoteText('');
                   setNoteTitle('');
                   setComplete(false);
