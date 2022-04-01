@@ -27,7 +27,6 @@ const Context = ({ children}) => {
         // .get("http://localhost:8000/api/note")
             .get("/api/note")
             .then((res) => {
-              console.log(res.data);
               setNotesArray(res.data);
               setIsLoading(false);
             })
@@ -111,7 +110,6 @@ const Context = ({ children}) => {
       }
     
     const editNote = (_id) => {
-      console.log('edit note function');
       setId(_id);
       setOpenEdit(true);
     } 
@@ -129,7 +127,6 @@ const Context = ({ children}) => {
       }
     
       const handleCategorySort = (e) => {
-          console.log("category sort");
         setFilterCategory(e.target.value);
       }
 

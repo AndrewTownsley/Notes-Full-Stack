@@ -23,7 +23,6 @@ function App() {
       // .get('http://localhost:8000/api/note')
       .get('api/note')
       .then((res) => {
-        console.log(res.data);
         setNotesArray(res.data);
       })
       .catch((err) => console.log(err))
