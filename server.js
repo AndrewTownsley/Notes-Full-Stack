@@ -3,8 +3,6 @@ const connectDB = require("./config/db");
 const cors = require("cors");
 // const compression = require('compression');
 const morgan = require('morgan');
-const mongoose = require('mongoose');
-const router = express.Router();
 const path = require('path');
 require("dotenv").config({ path: './env'});
 
