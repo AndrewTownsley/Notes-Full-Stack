@@ -24,8 +24,8 @@ const Context = ({ children}) => {
     useEffect(() => {
       setIsLoading(true);
         axios 
-        // .get("http://localhost:8000/api/note")
-            .get("/api/note")
+        .get("http://localhost:8000/api/note")
+            // .get("/api/note")
             .then((res) => {
               setNotesArray(res.data);
               setIsLoading(false);
@@ -62,8 +62,8 @@ const Context = ({ children}) => {
       
         if(noteText.trim().length > 0) {
             axios 
-              // .post("http://localhost:8000/api/note" , newNote)  
-              .post("/api/note" , newNote)  
+              .post("http://localhost:8000/api/note" , newNote)  
+              // .post("/api/note" , newNote)  
               .then((res) => {
                   createNote(noteText);
                   setNotesArray([ ...notesArray, newNote])
@@ -80,8 +80,8 @@ const Context = ({ children}) => {
 
       
     const deleteNote = ( _id ) => {
-        // axios.delete( `http://localhost:8000/api/note/${_id}`)
-        axios.delete( `/api/note/${_id}`)
+        axios.delete( `http://localhost:8000/api/note/${_id}`)
+        // axios.delete( `/api/note/${_id}`)
         .catch((error) => console.log(error))
         setNotesArray((notesArray) => {
           return notesArray.filter((note) => note._id !== _id)
@@ -95,8 +95,8 @@ const Context = ({ children}) => {
         newNotesArray[index].complete = !newNotesArray[index].complete;
         setNotesArray(newNotesArray);
         axios 
-            // .put(`http://localhost:8000/api/note/${newNotesArray[index]._id}`, newNotesArray[index])
-            .put(`/api/note/${newNotesArray[index]._id}`, newNotesArray[index])
+            .put(`http://localhost:8000/api/note/${newNotesArray[index]._id}`, newNotesArray[index])
+            // .put(`/api/note/${newNotesArray[index]._id}`, newNotesArray[index])
             .catch((err) => console.log(err))
       }
 

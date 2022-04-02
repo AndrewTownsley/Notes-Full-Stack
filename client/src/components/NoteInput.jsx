@@ -8,7 +8,8 @@ const NoteInput = () => {
       noteText,
       noteTitle,
       setCategory,
-      saveNote
+      saveNote,
+      open
     } = NoteState();
 
   const handleCategoryChange = (e) => {
@@ -18,7 +19,13 @@ const NoteInput = () => {
 
     return (
         <div className="note-input">
-          <h1>noteflix</h1>
+          {
+            open 
+              ?
+            <h2>Create Note</h2>
+              :
+            <h1>noteflix</h1>
+          }
               <label htmlFor="note-title">
                 </label>
                 <input

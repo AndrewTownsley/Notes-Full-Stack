@@ -52,10 +52,15 @@ const handleSubmit = (_id) => {
       
       return (
         <div className="edit-window">
-        <div ref={modalRef} className="note-input note-edit" onClick={() => setOpenEdit(true)}   >
+        <div ref={modalRef} 
+          // className="note-input note-edit" 
+          className="note-input"
+          onClick={() => setOpenEdit(true)}   >
             <form 
               onSubmit={(e) => handleSubmit(id)} 
-              className='edit'>
+              // className='edit'
+              className='edit-mobile'
+            >
             <button 
               className='edit-modal-close-btn' 
               onClick={() => setOpenEdit(false)}
@@ -82,7 +87,12 @@ const handleSubmit = (_id) => {
               placeholder="Enter note here..." 
               >
             </textarea>
-            <select className="note-input-select" onChange={(e) => setEditCategory(e.target.value)}     name="category" id="categorySelect">
+            <select 
+              // className="note-input-select" 
+              className=""
+              onChange={(e) => setEditCategory(e.target.value)}     
+              name="category" id="categorySelect"
+            >
                   <option value="">Category</option>
                   <option value="Important">Important !</option>
                   <option value="Work">Work</option>

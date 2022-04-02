@@ -421,7 +421,7 @@ select option {
 }
 
 .pin-icon {
-  z-index: -1;
+  /* z-index: -1; */
   /* pointer-events: none; */
 }
 
@@ -521,7 +521,7 @@ select option {
     cursor: pointer;
     border-radius: 1.5rem;
     transition: var(--trans-fast);
-    z-index: 4;
+    z-index: 3;
   }
 
   .burger-icon:hover {
@@ -535,31 +535,63 @@ select option {
 
   .sidebar {
     min-height: 70vh;
-    /* max-width: 50%; */
+    width: 100vw;
     justify-content: center;
     align-items: flex-start;
+    z-index: 4;
+  }
+  
+  .edit {
+    position: relative;
+    /* width: 500px; */
+    border: var(--border-gray);
+    border-radius: var(--border-rad);
+    /* padding: 2rem 0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+  }
+  
+  .edit-mobile {
+    width: 100%;
+    height: 80vh;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    position: relative;
+
   }
 
   .note-input {
-    margin: 0.5rem;
-    width: 80%;
+    /* margin: 0.5rem; */
+    width: 100%;
     z-index: 3;
   }
 
   .note-input h1 {
     margin-right: auto;
-    margin-left: 0;
+    margin-left: auto;
+    text-align: center;
+  }
+
+  .note-input h2 {
+    padding-bottom: 1rem;
   }
 
   .note-input input,
   .note-input textarea,
   .note-input select {
-    width: 100%;
+    width: 90%;
     padding: 10px;
   }
 
   .save-btn {
-    width: 100%;
+    width: 90%;
   }
 
   .note-history {
@@ -640,17 +672,17 @@ select option {
 
   .sidebar {
     position: absolute;
-    top: 10%;
+    top: 15%;
     left: 0;
     transition: var(--trans-slow);
     transform: translateX(-115%);
-    border-bottom-right-radius: 20px;
-    border-top-right-radius: 20px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
     box-shadow: 0px 0px 75px 30px rgba(59, 59, 59, 0.25);
   }
 
   .note-input {
-    margin: 0.5rem 0.5rem 0.5rem 1.5rem;
+    /* margin: 0.5rem 0.5rem 0.5rem 1.5rem; */
   }
 
   .openSidebar {
