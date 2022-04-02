@@ -2,6 +2,7 @@ const express = require('express')
 const connectDB = require("./config/db");
 const cors = require("cors");
 const compression = require('compression');
+const expressStaticGzip = require("express-static-gzip");
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const router = express.Router();
@@ -13,6 +14,10 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 app.use(compression());
+app.use("/", expressStaticGzip("/", {
+    enableBrotli: true,
+    index: false,
+}));
 app.use(cors({ origin: true, credentials: true}));
 app.use(express.json({ extended: false }));
 app.use(morgan("dev"));
