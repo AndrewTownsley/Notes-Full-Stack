@@ -13,11 +13,20 @@ require("dotenv").config({ path: './env'});
 const app = express();
 
 const PORT = process.env.PORT || 8000;
-app.use(compression());
+app.use(compression({ filter: shouldCompress}));
 app.use("/", expressStaticGzip("/", {
     enableBrotli: true,
     index: false,
 }));
+function shouldCompress (req, res) {
+    if (req.headers['x-no-compression']) {
+      // don't compress responses with this request header
+      return false
+    }
+  
+    // fallback to standard filter function
+    return compression.filter(req, res)
+  }
 app.use(cors({ origin: true, credentials: true}));
 app.use(express.json({ extended: false }));
 app.use(morgan("dev"));
