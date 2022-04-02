@@ -26,8 +26,8 @@ connectDB();
 app.use(express.static(path.join(__dirname, './client/build')))
 
 app.get('*', (req, res) => {
-    // res.writeHead(200, {
-    // 'Content-Encoding': 'gzip' })
+    res.writeHead(200, {
+    'Content-Encoding': 'gzip' })
     res.sendFile(path.join(__dirname, './client', 'build', 'index.html'))
 })
 // app.get('/', (req, res) => {
