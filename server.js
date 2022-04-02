@@ -1,7 +1,7 @@
 const express = require('express')
 const connectDB = require("./config/db");
 const cors = require("cors");
-const compression = require('compression');
+// const compression = require('compression');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const router = express.Router();
@@ -13,7 +13,7 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-app.use(compression());
+// app.use(compression());
 app.use(cors({ origin: true, credentials: true}));
 app.use(express.json({ extended: false }));
 app.use(morgan("dev"));
@@ -28,9 +28,9 @@ connectDB();
 app.use(express.static(path.join(__dirname, './client/build')))
 
 app.get('*', (req, res) => {
-    res.writeHead(200, {
-    'Content-Encoding': 'gzip' })
-    res.sendFile(path.join(__dirname, './client', 'build', 'index.html.br'))
+    // res.writeHead(200, {
+    // 'Content-Encoding': 'gzip' })
+    res.sendFile(path.join(__dirname, './client', 'build', 'index.html'))
 })
 // app.get('/', (req, res) => {
 //     res.send("**** Server is Running ****")
