@@ -12,16 +12,8 @@ require("dotenv").config({ path: './env'});
 const app = express();
 
 const PORT = process.env.PORT || 8000;
-app.use(compression({ filter: shouldCompress}));
-function shouldCompress (req, res) {
-    if (req.headers['x-no-compression']) {
-      // don't compress responses with this request header
-      return false
-    }
-  
-    // fallback to standard filter function
-    return compression.filter(req, res)
-  }
+
+app.use(compression());
 app.use(cors({ origin: true, credentials: true}));
 app.use(express.json({ extended: false }));
 app.use(morgan("dev"));
@@ -36,7 +28,10 @@ connectDB();
 app.use(express.static(path.join(__dirname, './client/build')))
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client', 'build', 'index.html.gz'))
+    res.writeHead(200, {
+        'Content-Encoding': 'gzip' });
+        fs.createReadStream('js/client-main.min.js').pipe(zlib.createGzip()).pipe(res);
+    res.sendFile(path.join(__dirname, './client', 'build', 'index.html'))
 })
 // app.get('/', (req, res) => {
 //     res.send("**** Server is Running ****")
