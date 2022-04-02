@@ -14,10 +14,10 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 app.use(compression({ filter: shouldCompress}));
-// app.use("/", expressStaticGzip("/", {
-//     enableBrotli: true,
-//     index: false,
-// }));
+app.use("/", expressStaticGzip("/", {
+    enableBrotli: true,
+    index: false,
+}));
 function shouldCompress (req, res) {
     if (req.headers['x-no-compression']) {
       // don't compress responses with this request header
@@ -41,7 +41,7 @@ connectDB();
 app.use(express.static(path.join(__dirname, './client/build')))
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client', 'build', 'index.html.br'))
+    res.sendFile(path.join(__dirname, './client', 'build', 'index.html.gz'))
 })
 // app.get('/', (req, res) => {
 //     res.send("**** Server is Running ****")
