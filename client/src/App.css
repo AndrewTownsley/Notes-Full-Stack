@@ -425,9 +425,9 @@ select option {
   /* pointer-events: none; */
 }
 
-.complete-container {
+/* .complete-container {
   z-index: 2;
-}
+} */
 
 .edit-btn:hover,
 .delete-btn:hover,
@@ -521,7 +521,7 @@ select option {
     cursor: pointer;
     border-radius: 1.5rem;
     transition: var(--trans-fast);
-    z-index: 10;
+    z-index: 4;
   }
 
   .burger-icon:hover {
@@ -570,7 +570,7 @@ select option {
     display: flex;
     flex-direction: column;
     padding: 0 0.5rem;
-    z-index: -1;
+    z-index: 0;
   }
 
   .note-search-container {
