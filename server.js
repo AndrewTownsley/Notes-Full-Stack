@@ -5,6 +5,7 @@ const compression = require('compression');
 const expressStaticGzip = require("express-static-gzip");
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const router = express.Router();
 const path = require('path');
 require("dotenv").config({ path: './env'});
 
@@ -13,7 +14,7 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 app.use(compression({ filter: shouldCompress}));
-app.use("/", expressStaticGzip("/", {
+app.use("/api/note", expressStaticGzip("/api/note", {
     enableBrotli: true,
     index: false,
 }));
